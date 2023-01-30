@@ -21,7 +21,7 @@ class SelfAttentionModule(nn.Module):
             raise Exception(f"Wrong number of dimensions passed into SelfAttentionModule.forward: Expected 3, got {X.ndim}")
 
         if X.shape[-1] != self.embed_dim:
-            raise Exception(f"Wrong embed dimension passed into SelfAttentionModule.forward: Expected {self.embed_dim}, received {X.shape[-1]}")
+            raise Exception(f"Wrong embed dimension passed into SelfAttentionModule.forward: Expected {self.embed_dim}, got {X.shape[-1]}")
 
         Q = self.query(X)
         K = self.key(X)
