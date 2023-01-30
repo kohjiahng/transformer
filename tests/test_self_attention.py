@@ -1,10 +1,10 @@
 import pytest
 import torch
-from transformer.attention import SelfAttentionModule
+from transformer.utils.self_attention import SelfAttentionModule
 
 @pytest.fixture
 def module():
-    return SelfAttentionModule(10,10,5)
+    return SelfAttentionModule(embed_dim=10,key_dim=12,value_dim=5)
 def test_dim(module):
     inp = torch.rand((3, 10, 10))
     out = module(inp)

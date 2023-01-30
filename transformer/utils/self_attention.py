@@ -2,10 +2,9 @@ import torch
 from torch import nn
 class SelfAttentionModule(nn.Module):
     '''
-    NxMxd -> NxMxvalue_dim
+    NxMxembed_dim -> NxMxvalue_dim
     N: batch size
     M: Number of words
-    d: Embedding dimension
     '''
     def __init__(self, embed_dim, key_dim, value_dim):
         super().__init__()
@@ -18,8 +17,11 @@ class SelfAttentionModule(nn.Module):
         self.value = nn.Linear(self.embed_dim, self.value_dim)
 
     def forward(self, X):
+        if X.ndim != 3:
+            raise Exception(f"Wrong number of dimensions passed into SelfAttentionModule.forward: Expected 3, got {X.ndim}")
+
         if X.shape[-1] != self.embed_dim:
-            raise Exception(f"Wrong embed dimension passed into AttentionModule.forward: Expected {self.embed_dim}, received {X.shape[-1]}")
+            raise Exception(f"Wrong embed dimension passed into SelfAttentionModule.forward: Expected {self.embed_dim}, received {X.shape[-1]}")
 
         Q = self.query(X)
         K = self.key(X)
