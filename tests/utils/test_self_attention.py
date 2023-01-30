@@ -1,6 +1,6 @@
 import pytest
 import torch
-from transformer.utils.self_attention import SelfAttentionModule
+from transformer.utils import SelfAttentionModule
 
 @pytest.fixture
 def module():

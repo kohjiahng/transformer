@@ -33,15 +33,7 @@ def add_sin_positional_encodings(X):
 
     PE[:, ::2] = even
     PE[:, 1::2] = odd
-    
-    # for pos in range(X.shape[1]):
-    #     for i in range(d):
-    #         if i % 2 == 0:
-    #             PE[pos][i] = math.sin(pos*(10000**(-i/d)))
-    #         else:
-    #             PE[pos][i] = math.cos(pos*(10000**(-(i-1)/d)))
-
-    # PE_cache[d] = PE
+   
     return X + PE
 
 

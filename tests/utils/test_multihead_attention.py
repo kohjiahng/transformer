@@ -1,6 +1,6 @@
 import pytest
 import torch
-from transformer.utils.multihead_attention import MultiHeadAttentionModule
+from transformer.utils import MultiHeadAttentionModule
 
 
 @pytest.fixture

@@ -1,13 +1,13 @@
 import pytest
 import torch
-from transformer.utils.pos_encodings import add_sin_positional_encodings 
+from transformer.utils import add_sin_positional_encodings 
 import math
 def test_encoding():
     inp = torch.rand((3, 10, 10), dtype=torch.float32)
     out = add_sin_positional_encodings(inp)
 
     assert out.shape == torch.Size([3, 10, 10])
-    
+
     d = inp.shape[2]
     for pos in range(inp.shape[1]):
         for i in range(inp.shape[2]):
