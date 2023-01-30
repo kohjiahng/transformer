@@ -3,9 +3,9 @@ from torch import nn
 from transformer.utils import MultiHeadAttentionModule, SelfAttentionModule, add_sin_positional_encodings
 
 class EncoderBlock(nn.Module):
-    def __init__(self, nheads, embed_dim, key_dim, value_dim, ff_dim):
+    def __init__(self, n_heads, embed_dim, key_dim, value_dim, ff_dim):
         super().__init__()
-        self.mha = MultiHeadAttentionModule(nheads, embed_dim, key_dim, value_dim, output_dim=embed_dim)
+        self.mha = MultiHeadAttentionModule(n_heads, embed_dim, key_dim, value_dim, output_dim=embed_dim)
         self.layer_norm = nn.LayerNorm((embed_dim,))
         self.ff1 = nn.Linear(embed_dim, ff_dim)
         self.relu = nn.ReLU()

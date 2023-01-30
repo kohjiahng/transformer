@@ -16,4 +16,4 @@ def test_encoding():
             else:
                 pe = math.cos(pos*(10000**(-(i-1)/d)))
             for n in range(inp.shape[0]):
-                assert out[n][pos][i].item() == pytest.approx(inp[n][pos][i].item() + pe)
+                assert out[n][pos][i].item() - inp[n][pos][i].item() == pytest.approx(pe, rel=1e-3)

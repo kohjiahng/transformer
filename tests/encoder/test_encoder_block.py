@@ -5,7 +5,7 @@ from transformer.encoder.encoder_block import EncoderBlock
 @pytest.fixture
 def encoderblock():
     return EncoderBlock(
-        nheads=6,
+        n_heads=6,
         embed_dim=10,
         key_dim=5,
         value_dim=6,

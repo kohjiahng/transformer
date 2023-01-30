@@ -8,17 +8,17 @@ class MultiHeadAttentionModule(nn.Module):
     N: batch size
     M: Number of words
     '''
-    def __init__(self, nheads, embed_dim, key_dim, value_dim, output_dim):
+    def __init__(self, n_heads, embed_dim, key_dim, value_dim, output_dim):
         super().__init__()
-        self.nheads = nheads
+        self.n_heads = n_heads
         self.embed_dim = embed_dim
         self.key_dim = key_dim
         self.value_dim = value_dim
         self.output_dim = output_dim
 
-        self.heads = [SelfAttentionModule(embed_dim,key_dim,value_dim) for _ in range(nheads)]
+        self.heads = [SelfAttentionModule(embed_dim,key_dim,value_dim) for _ in range(n_heads)]
         
-        self.mix_layer = nn.Linear(nheads*value_dim, output_dim) # To mix the embeddings from each head
+        self.mix_layer = nn.Linear(n_heads*value_dim, output_dim) # To mix the embeddings from each head
 
     def forward(self, X):
         if X.ndim != 3:

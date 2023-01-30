@@ -6,7 +6,7 @@ from transformer.utils import MultiHeadAttentionModule
 @pytest.fixture
 def module():
     return MultiHeadAttentionModule(
-        nheads=3,
+        n_heads=3,
         embed_dim=10,
         key_dim=12,
         value_dim=6,
