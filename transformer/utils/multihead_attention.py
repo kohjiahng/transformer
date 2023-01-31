@@ -16,7 +16,7 @@ class MultiHeadAttentionModule(nn.Module):
         self.value_dim = value_dim
         self.output_dim = output_dim
 
-        self.heads = [SelfAttentionModule(embed_dim,key_dim,value_dim) for _ in range(n_heads)]
+        self.heads = nn.ModuleList([SelfAttentionModule(embed_dim,key_dim,value_dim) for _ in range(n_heads)]) # Module list so that it registers as a parameter
         
         self.mix_layer = nn.Linear(n_heads*value_dim, output_dim) # To mix the embeddings from each head
 
